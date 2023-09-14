@@ -300,7 +300,7 @@ float _Dip_cal_(string s)
 template <typename... Args>
 string _Dip_conv_(const string &s, Args... args)
 {
-    int k = 0, id = 0;
+    int k = 0;
     string ts;
     _queue_ my_queue_;
     (my_queue_._Dip_push_(args), ...);
