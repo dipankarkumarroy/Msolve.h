@@ -79,10 +79,10 @@ float _Dip_pop_2()
 class _Dip_queue_
 {
 public:
-    int data;
+    float data;
     _Dip_queue_ *next;
 
-    _Dip_queue_(int val) : data(val), next(nullptr) {}
+    _Dip_queue_(float val) : data(val), next(nullptr) {}
 };
 
 class _queue_
@@ -94,7 +94,7 @@ private:
 public:
     _queue_() : front(nullptr), rear(nullptr) {}
 
-    void _Dip_push_(int value)
+    void _Dip_push_(float value)
     {
         _Dip_queue_ *new_Dip_queue_ = new _Dip_queue_(value);
         if (isEmpty())
@@ -108,7 +108,7 @@ public:
         }
     }
 
-    int _Dip_pop_()
+    float _Dip_pop_()
     {
         if (isEmpty())
         {
@@ -117,7 +117,7 @@ public:
         }
         else
         {
-            int _Dip_pop_pedValue = front->data;
+            float _Dip_pop_pedValue = front->data;
             _Dip_queue_ *temp = front;
             front = front->next;
             delete temp;
@@ -350,5 +350,5 @@ int main()
     cout << Msolve("-1-2-3+4+3+5-08+78+54") << "\n";
     cout << Msolve("-1-2-3+4+3+5-08+" + to_string(x0) + "+54") << "\n";
     cout << Msolve("-1-2-3+4+3+5-08+" + x1 + "+54") << "\n";
-    cout << Msolve("(ab2+ d_y tc-r+2.0)", 1, 2, 3) << '\n';
+    cout << Msolve("(ab2+ d_y tc-r+2.0)", 1, 2.5, 3) << '\n';
 }
