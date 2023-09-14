@@ -17,3 +17,5 @@ format for use Msolve() function:
     cout << Msolve("-1-2-3+4+3+5-08+" + x1 + "+54") << "\n";
 ### format4:
     cout << Msolve("(ab2+ d_y tc-r+2.0)", 1, 2, 3) << '\n';
+    //ab2=1, d_y tc=2,r=3;
+this format is my choice, use it.
