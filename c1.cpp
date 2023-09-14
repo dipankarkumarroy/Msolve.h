@@ -188,7 +188,8 @@ string infToPost(string s)
 
 float cal(string s)
 {
-int i=0,val;
+int i=0;
+float val;
 string temp="";
 s=s+'E';
 while(s[i]==' '&& s[i]!='E')
