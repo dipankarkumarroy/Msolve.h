@@ -333,7 +333,18 @@ std::string _Dip_conv_(const std::string &s, Args... args)
 
 float Msolve(std::string s)
 {
-    return _Dip_cal_(_Dip_InfTPo_(s));
+    int k=0;
+    std::string ts;
+    while(s[k]!='\0')
+    {
+        if(s[k]!=' ')
+        {
+            ts=ts+s[k];
+        }
+        
+    k++;
+    }
+    return _Dip_cal_(_Dip_InfTPo_(ts));
 }
 
 template <typename... Args>
