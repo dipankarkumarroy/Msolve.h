@@ -1,3 +1,8 @@
+/********************************************************
+*This code orginally Written By 
+*Author: Dipankar Kumar Roy
+*If you want to use this code, please mention Authors name.
+*********************************************************/
 #ifndef MSOLVE_HPP
 #define MSOLVE_HPP
 class _Dip_
