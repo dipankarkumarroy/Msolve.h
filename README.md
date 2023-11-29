@@ -17,7 +17,7 @@ format for use Msolve() function:
     //ab2=1, d_y tc=2,r=3;
 this format is my choice, use it.
 
-## c2.cpp
+## c3.cpp
 open c3 folder and you can see two file one is Msolve.hpp (is a header file) and a c3.cpp(main), And in c3.cpp includes "Msolve.hpp".
 to compile this program youneed to type:
     
