@@ -13,8 +13,8 @@ format for use Msolve() function:
     string x1 = to_string(x0);
     cout << Msolve("-1-2-3+4+3+5-08+" + x1 + "+54") << "\n";
 ### format4:
-    cout << Msolve("(ab2+ d_y tc-r+2.0)", 1, 2, 3) << '\n';
-    //ab2=1, d_y tc=2,r=3;
+    cout << Msolve("(ab2+ d_ytc-r+2.0)", 1, 2, 3) << '\n';
+    //ab2=1, d_ytc=2,r=3;
     cout<<Msolve("2*(x^5) - 3*(x^4) + 7*(x^3) + 4*(x^2) - 6*(x*y) + 5*(y^3) - 8*(y^2) + 9*y - 12",2,-3);
     //x=2,y=-3;
 this format is my choice, use it.
