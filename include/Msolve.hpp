@@ -1,8 +1,8 @@
 /********************************************************
-*This code orginally Written By 
-*Author: Dipankar Kumar Roy
-*If you want to use this code, please mention Authors name.
-*********************************************************/
+ *This code orginally Written By
+ *Author: Dipankar Kumar Roy
+ *If you want to use this code, please mention Authors name.
+ *********************************************************/
 #ifndef MSOLVE_HPP
 #define MSOLVE_HPP
 class _Dip_
@@ -17,6 +17,71 @@ class _Dip__s
 public:
     double data;
     _Dip__s *next;
+};
+
+class Node
+{
+public:
+    std::string data;
+    Node *next;
+
+    Node(const std::string &value) : data(value), next(nullptr) {}
+};
+
+class _Dip_ll
+{
+private:
+    Node *head;
+
+public:
+    _Dip_ll() : head(nullptr) {}
+
+    void insert(const std::string &value)
+    {
+        Node *newNode = new Node(value);
+        if (!head)
+        {
+            head = newNode;
+        }
+        else
+        {
+            Node *current = head;
+            while (current->next)
+            {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+
+    std::string search(const std::string &key)
+    {
+        Node *current = head;
+        while (current)
+        {
+            size_t pos = current->data.find(key + ":");
+            if (pos == 0)
+            {
+                size_t colonPos = current->data.find(':');
+                if (colonPos != std::string::npos)
+                {
+                    return current->data.substr(colonPos + 1);
+                }
+            }
+            current = current->next;
+        }
+        return "";
+    }
+
+    ~_Dip_ll()
+    {
+        while (head)
+        {
+            Node *temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
 };
 
 _Dip_ *char_top = __null;
@@ -256,6 +321,15 @@ double _Dip_cal_(std::string s)
                 {
                     z = 1;
                 }
+                else if (y < 0)
+                {
+                    y = y * (-1);
+                    for (int i = 0; i < y; i++)
+                    {
+                        z = z * x;
+                    }
+                    z = 1 / z;
+                }
                 else
                 {
                     for (int i = 0; i < y; i++)
@@ -304,22 +378,48 @@ double _Dip_cal_(std::string s)
 template <typename... Args>
 std::string _Dip_conv_(const std::string &s, Args... args)
 {
+    _Dip_ll list;
     int k = 0, id = 0;
     std::string ts;
     _queue_ my_queue_;
-    (my_queue_._Dip_push_(args),...);
+    (my_queue_._Dip_push_(args), ...);
     while (s[k] != '\0')
     {
-        if (s[k] == ' ')
+        while (s[k] == ' ')
         {
             k++;
         }
         if (isalpha(s[k]) || s[k] == '_')
         {
-            ts = ts + std::to_string(my_queue_._Dip_pop_());
+            std::string temp = "";
+            std::string temp1 = "";
             while (isalpha(s[k]) || s[k] == '_' || s[k] == ' ' || isdigit(s[k]))
             {
+                if (s[k] != ' ')
+                {
+                    temp = temp + s[k];
+                }
+
                 k++;
+            }
+            temp1 = list.search(temp);
+            if (temp1 == "")
+            {
+                double x = my_queue_._Dip_pop_();
+                if (x < 0)
+                {
+                    ts = ts + "(0" + std::to_string(x) + ")";
+                    list.insert(temp + ':' + "(0" + std::to_string(x) + ")");
+                }
+                else
+                {
+                    ts = ts + std::to_string(x);
+                    list.insert(temp + ':' + std::to_string(x));
+                }
+            }
+            else
+            {
+                ts = ts + temp1;
             }
         }
         else if (!isalnum(s[k]) || isdigit(s[k]))
@@ -338,16 +438,16 @@ std::string _Dip_conv_(const std::string &s, Args... args)
 
 double Msolve(std::string s)
 {
-    int k=0;
+    int k = 0;
     std::string ts;
-    while(s[k]!='\0')
+    while (s[k] != '\0')
     {
-        if(s[k]!=' ')
+        if (s[k] != ' ')
         {
-            ts=ts+s[k];
+            ts = ts + s[k];
         }
-        
-    k++;
+
+        k++;
     }
     return _Dip_cal_(_Dip_InfTPo_(ts));
 }
