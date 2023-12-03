@@ -19,33 +19,33 @@ public:
     _Dip__s *next;
 };
 
-class Node
+class _Dip_Node
 {
 public:
     std::string data;
-    Node *next;
+    _Dip_Node *next;
 
-    Node(const std::string &value) : data(value), next(nullptr) {}
+    _Dip_Node(const std::string &value) : data(value), next(nullptr) {}
 };
 
 class _Dip_ll
 {
 private:
-    Node *head;
+    _Dip_Node *head;
 
 public:
     _Dip_ll() : head(nullptr) {}
 
     void insert(const std::string &value)
     {
-        Node *newNode = new Node(value);
+        _Dip_Node *newNode = new _Dip_Node(value);
         if (!head)
         {
             head = newNode;
         }
         else
         {
-            Node *current = head;
+            _Dip_Node *current = head;
             while (current->next)
             {
                 current = current->next;
@@ -56,7 +56,7 @@ public:
 
     std::string search(const std::string &key)
     {
-        Node *current = head;
+        _Dip_Node *current = head;
         while (current)
         {
             size_t pos = current->data.find(key + ":");
@@ -77,7 +77,7 @@ public:
     {
         while (head)
         {
-            Node *temp = head;
+            _Dip_Node *temp = head;
             head = head->next;
             delete temp;
         }
